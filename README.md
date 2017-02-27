@@ -1,12 +1,16 @@
 ## Getting Started
 If you don't have some global packages installed yet, you can run the command below:
 ```bash
-npm install -g resume-cli gulp-cli
+npm install -g gulp bower
 ```
 
 When building the project for the very first time, run the following command.
 ```bash
 npm install
+```
+
+```bash
+bower install
 ```
 This will install all of your node modules.
 
@@ -19,4 +23,3 @@ gulp serve
 Everything should be available on localhost:3000
 ## Details
 The 2 views and controllers and services are located in the src/app/ directory
-  
