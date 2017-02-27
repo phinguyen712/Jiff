@@ -62,6 +62,7 @@ export class DetailsController {
                 };
     });
     this.totalIncentive = this.totalGoals(goals)
+    this.log.log(this.currentProgram);
     return goals;
   }
 
@@ -72,7 +73,7 @@ export class DetailsController {
        })
        .reduce((x,y)=>{
          return x + y;
-       })
+       },0)
    )
   }
 

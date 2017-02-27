@@ -1,9 +1,13 @@
-<div class="container">
-  <h1>dashboard</h1>
-  <div class="col-sm-6 col-md-4" ng-repeat="program in dashboard.programs">
-      <div class="caption">
-        <h3>{{ program.title }}</h3>
-        <a ng-href="#/details/{{program.guid}}">hello<a>
-      </div>
+<div id="dashboard">
+  <div class="flex-grid-thirds">
+    <div class="thumbnails-item" ng-repeat="program in dashboard.programs">
+        <div class={{program.display_type}}>
+          <a ng-href="#/details/{{program.guid}}">
+            <img class="icon-image" src="{{program.icon_url}}">
+            </img>
+          </a>
+          <h3>{{ program.title }}</h3>
+        </div>
+    </div>
   </div>
 </div>

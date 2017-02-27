@@ -1,0 +1,33 @@
+#dashboard{
+  h3{
+    color:white;
+  }
+  .flex-grid-thirds {
+    margin-top:50px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
+    align-content: center;
+  }
+  .thumbnails-item {
+    text-align:center;
+    height:200px;
+    width:32%;
+  }
+  .icon-image{
+    height:100px;
+    width:100px;
+  }
+
+  @media (max-width: 350px) {
+    .thumbnails-item {
+      width:100%;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .thumbnails-item {
+      width:50%;
+    }
+  }
+}

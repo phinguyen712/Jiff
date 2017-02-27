@@ -1,4 +1,16 @@
-<div class="container" ng-controller = "DetailsController as details" >
-    <h1>{{details.currentProgram.guid}}</h1>
-    <h2>{{details.totalIncentive}}</h2>;
+<div id="details" ng-controller = "DetailsController as details" >
+  <a ng-href="#/">
+    <button class= "back-button"><h3>back</h3></button>
+  </a>
+  <div class="content">
+    <div class="headers">
+      <img class="icon-image" src={{details.currentProgram.icon_url}}></img>
+      <h3>{{details.currentProgram.title}}</h3>
+    </div>
+    <p>{{details.currentProgram.description}}</p>
+    <ul ng-repeat="goal in details.currentProgram.goals">
+      <li>{{goal.title}}: {{goal.incentiveValue}}</li>
+    </ul>
+    <h2>Total Incentives : {{details.totalIncentive}}</h2>
+  </div>
 </div>
