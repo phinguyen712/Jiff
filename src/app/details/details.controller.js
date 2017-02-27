@@ -1,15 +1,14 @@
 export class DetailsController {
-  constructor ($log,$routeParams,programsBlueprint) {
+  constructor ($routeParams,programsBlueprint) {
     'ngInject';
     this.guid = $routeParams.guid;
     this.currentPrograms;
     this.goals;
     this.totalIncentive;
-    this.log = $log;
 
     this.createGoals(programsBlueprint);
   }
-
+  //Asynchronously retrieve goals from programsBlueprint Service
   createGoals(service){
     service.getGoals().then((response)=>{
         this.goals = response.data.goals;
@@ -20,7 +19,7 @@ export class DetailsController {
       throw err;
     });
   }
-
+//Asynchronously retrieve programs_blueprint json data from programsBlueprint Service
   createPrograms(service){
     service.getPrograms().then((response)=>{
         this.programs = response.data.program_blueprints;
@@ -31,7 +30,7 @@ export class DetailsController {
       throw err;
     });
   }
-
+//set this.currentProgram to the program that have been selected in dashboard
   showSelectedProgram(programs){
     const guid = this.guid;
     let currentProgram;
@@ -44,7 +43,7 @@ export class DetailsController {
     this.currentProgram = currentProgram;
     this.currentProgram.goals = this.mapGoals(currentProgram)
   }
-
+//map out goals array to array with {title:.. , incentive:...}
   mapGoals(currentProgram){
     let goals = this.goals;
 
@@ -61,12 +60,11 @@ export class DetailsController {
                   incentiveValue:goal.incentive_value
                 };
     });
-    this.totalIncentive = this.totalGoals(goals)
-    this.log.log(this.currentProgram);
+    this.totalIncentive = this.sumIncentives(goals)
     return goals;
   }
-
-  totalGoals(goals){
+//sum up all of the incentives for the goals
+  sumIncentives(goals){
     return (
         goals.map((goal)=>{
          return goal.incentiveValue

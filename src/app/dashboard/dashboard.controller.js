@@ -3,7 +3,7 @@ export class DashboardController {
     'ngInject';
     this.createPrograms(programsBlueprint)
   }
-  //Asynchronously retrieve data from services
+  //Asynchronously retrieve goals from programsBlueprint Service
   createPrograms(service){
     service.getPrograms().then((response)=>{
       this.programs = response.data.program_blueprints;
