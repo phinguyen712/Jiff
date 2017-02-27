@@ -1,12 +1,13 @@
 export class DetailsController {
-  constructor ($routeParams,programsBlueprint) {
+  constructor ($log,$routeParams,programsBlueprint) {
     'ngInject';
     this.guid = $routeParams.guid;
-    this.currentPrograms;
+    this.currentProgram;
     this.goals;
     this.totalIncentive;
-
+    this.log = $log.log;
     this.createGoals(programsBlueprint);
+
   }
   //Asynchronously retrieve goals from programsBlueprint Service
   createGoals(service){
@@ -65,6 +66,7 @@ export class DetailsController {
   }
 //sum up all of the incentives for the goals
   sumIncentives(goals){
+    this.log(this.currentProgram.incentive_description)
     return (
         goals.map((goal)=>{
          return goal.incentiveValue

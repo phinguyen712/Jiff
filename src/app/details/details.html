@@ -8,9 +8,13 @@
       <h3>{{details.currentProgram.title}}</h3>
     </div>
     <p>{{details.currentProgram.description}}</p>
-    <ul ng-repeat="goal in details.currentProgram.goals">
-      <li>{{goal.title}}: {{goal.incentiveValue}}</li>
-    </ul>
-    <h2>Total Incentives : {{details.totalIncentive}}</h2>
+    <div ng-if="details.currentProgram.incentive_description">
+      <h2 class="incentive">Incentive</h3>
+      <h4>{{details.currentProgram.incentive_description}}</4>
+      <ul ng-repeat="goal in details.currentProgram.goals">
+        <li>{{goal.title}}: {{goal.incentiveValue}}</li>
+      </ul>
+      <h4>Total Incentives : {{details.totalIncentive}}</h4>
+    </div>
   </div>
 </div>
