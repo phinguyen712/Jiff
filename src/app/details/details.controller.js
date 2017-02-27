@@ -2,6 +2,9 @@ export class DetailsController {
   constructor ($log,$routeParams,programsBlueprint) {
     'ngInject';
     this.guid = $routeParams.guid;
+    this.currentPrograms;
+    this.goals;
+    this.totalIncentive;
     this.log = $log;
 
     this.createGoals(programsBlueprint);
@@ -39,17 +42,38 @@ export class DetailsController {
       }
     });
     this.currentProgram = currentProgram;
-    this.mapGoals(currentProgram)
+    this.currentProgram.goals = this.mapGoals(currentProgram)
   }
 
   mapGoals(currentProgram){
-    const goals = this.goals;
-    this.log.log(goals);
-    // currentProgram.goals.map((x)=>{
-    //   goals.forEach
-    //   const goalData = {
-    //
-    //   }
-    //})
+    let goals = this.goals;
+
+    goals =  currentProgram.goals.map((x)=>{
+                let goal;
+
+                goals.forEach((y)=>{
+                  if(x.guid === y.guid){
+                    return goal = y;
+                  }
+                });
+                return {
+                  title:goal.title,
+                  incentiveValue:goal.incentive_value
+                };
+    });
+    this.totalIncentive = this.totalGoals(goals)
+    return goals;
   }
+
+  totalGoals(goals){
+    return (
+        goals.map((goal)=>{
+         return goal.incentiveValue
+       })
+       .reduce((x,y)=>{
+         return x + y;
+       })
+   )
+  }
+
 }
