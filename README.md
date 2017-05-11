@@ -1,3 +1,5 @@
+Simple app for Fitness built on Angular 1.5
+
 ## Getting Started
 If you don't have some global packages installed yet, you can run the command below:
 ```bash
